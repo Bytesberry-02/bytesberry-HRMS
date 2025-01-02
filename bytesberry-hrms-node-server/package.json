@@ -1,0 +1,44 @@
+{
+  "name": "bytesberry-hrms-node-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "axios": "^1.5.1",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.19.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "date-fns": "^2.28.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-rate-limit": "^6.5.1",
+    "helmet": "^6.0.0",
+    "hsts": "^2.2.0",
+    "jsonwebtoken": "^9.0.1",
+    "keypair": "^1.0.4",
+    "multer": "^1.4.5-lts.1",
+    "node-rsa": "^1.1.1",
+    "nodemailer": "^6.7.2",
+    "pg": "^8.7.3",
+    "querystring": "^0.2.1",
+    "request": "^2.88.2",
+    "request-ip": "^3.3.0",
+    "sanitize-html": "^2.7.1",
+    "uuid": "^8.3.2",
+    "yarn": "^1.22.22"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
