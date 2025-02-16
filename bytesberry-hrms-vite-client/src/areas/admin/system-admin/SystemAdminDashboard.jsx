@@ -18,7 +18,7 @@ export default function SystemAdminDashboard() {
         </Dashboard>
       </section>
 
-      <section className="relative block lg:hidden w-[90%] mx-auto">
+      <section className="relative  w-[90%] mx-auto">
         <div className="mt-36 flex flex-col items-center justify-center">
           <p className="text-base font-semibold text-center">
             Bytesberry Technologies

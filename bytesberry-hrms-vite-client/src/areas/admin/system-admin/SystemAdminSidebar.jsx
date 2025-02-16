@@ -60,15 +60,15 @@ export default function SystemAdminSidebar({
                 </li>
 
                 <li className="pt-2">
-                  <Link to="#" className="pt-2">
+                  <Link to="/system-admin/master-config-Remainder-Type" className="pt-2">
                     <span
                       className={`shrink-0 ${
-                        pathname.includes("#")
+                        pathname.includes("/system-admin/master-config-Remainder-Type")
                           ? "text-slate-700 font-semibold"
                           : "text-slate-500 font-normal"
                       } font-medium`}
                     >
-                      Some Config
+                      Remainder Type
                     </span>
                   </Link>
                 </li>
@@ -88,7 +88,7 @@ export default function SystemAdminSidebar({
                         : "text-slate-700 font-normal"
                     }`}
                   >
-                    Employee Management
+                    Remainder Details Management
                   </p>
                 </Link>
               </div>

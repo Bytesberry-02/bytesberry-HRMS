@@ -10,4 +10,8 @@ export const EMPLOYEE_CONFIG_URL = "";
 // Master Gender System Admin
 export const MASTER_GENDER_CONFIG_URL = "/systemAdmin/masterGenderConfig";
 
+//Master Remainder Type system admin
+export const MASTER_REMAINDER_TYPE_CONFIG_URL="/systemAdmin/masterRemainderTypeConfig";
+
+
 //#endregion
