@@ -12,7 +12,8 @@ import DemoPage from "./areas/public/pages/demoPage.component";
 import SystemAdminDashboard from "./areas/admin/system-admin/SystemAdminDashboard";
 
 import GenderConfig from "./areas/admin/system-admin/modules/MasterGender/genderConfig.component";
-import RemainderTypeConfig from "./areas/admin/system-admin/modules/MasterRemainderType/RemainderTypeConfig.component";
+import ReminderTypeConfig from "./areas/admin/system-admin/modules/MasterReminderType/ReminderTypeConfig.component";
+import ClientReminderConfig from "./areas/admin/system-admin/modules/ClientReminderDetails/ClientReminderConfig.component";
 
 
 function App() {
@@ -51,9 +52,16 @@ function App() {
 
         <Route
           exact
-          path="/system-admin/master-config-Remainder-Type"
+          path="/system-admin/master-config-reminder-Type"
           element={
-            <RemainderTypeConfig />
+            <ReminderTypeConfig />
+          }
+        />
+        <Route
+          exact
+          path="/system-admin/client-reminder-config"
+          element={
+            <ClientReminderConfig />
           }
         />
       </Routes>

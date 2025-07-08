@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 import axios from "../../../../../api/axios";
-import { MASTER_REMAINDER_TYPE_CONFIG_URL} from "../../../../../api/api_routing_urls";
+import { MASTER_REMINDER_TYPE_CONFIG_URL} from "../../../../../api/api_routing_urls";
 
 import HeadingAndButton from "../../../../../reusable-components/HeadingAndButton";
 import Input from "../../../../../reusable-components/inputs/InputTextBox/Input";
@@ -15,19 +15,19 @@ import Spinner from "../../../../../reusable-components/spinner/spinner.componen
 
 import showToast from "../../../../../utilities/notification/NotificationModal";
 
-const AddRemainderTypeForm = ({
+const AddReminderTypeForm = ({
   setCurrentPage,
   currentPage,
-  getRemainderTypeList,
-  editRemainderTypeDetails,
+  getReminderTypeList,
+  editReminderTypeDetails,
 }) => {
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
 
-  const isEdit = Object.keys(editRemainderTypeDetails)?.length > 0;
+  const isEdit = Object.keys(editReminderTypeDetails)?.length > 0;
 
   const defaultValues = {
-    remainder_type_id: !isEdit ? "" : editRemainderTypeDetails?.remainder_type_id,
-    remainder_type_name: !isEdit ? "" : editRemainderTypeDetails?.remainder_type_name,
+    reminder_type_id: !isEdit ? "" : editReminderTypeDetails?.reminder_type_id,
+    reminder_type_name: !isEdit ? "" : editReminderTypeDetails?.reminder_type_name,
   };
 
   const {
@@ -48,7 +48,7 @@ const AddRemainderTypeForm = ({
     setIsFormSubmitting(true);
     try {
       let sendDataObj = {
-        remainder_type_name: data?.remainder_type_name,
+        reminder_type_name: data?.reminder_type_name,
       };
 
       // console.log("sendDataObj inside onSubmit()", sendDataObj);
@@ -56,12 +56,12 @@ const AddRemainderTypeForm = ({
       let response = "";
 
       if (!isEdit) {
-        response = await axios.post(MASTER_REMAINDER_TYPE_CONFIG_URL, sendDataObj);
+        response = await axios.post(MASTER_REMINDER_TYPE_CONFIG_URL, sendDataObj);
       } else {
-        sendDataObj.remainder_type_id = defaultValues?.remainder_type_id;
+        sendDataObj.reminder_type_id = defaultValues?.reminder_type_id;
 
         response = await axios.post(
-          `${MASTER_REMAINDER_TYPE_CONFIG_URL}/update`,
+          `${MASTER_REMINDER_TYPE_CONFIG_URL}/update`,
           sendDataObj
         );
       }
@@ -69,10 +69,10 @@ const AddRemainderTypeForm = ({
        console.log({ response });
 
       if (response.status === 200) {
-        showToast("Remainder Master Details updated successfully.", "success");
+        showToast("Reminder Master Details updated successfully.", "success");
         setCurrentPage(!currentPage);
 
-        getRemainderTypeList();
+        getReminderTypeList();
       } else {
         showToast(
           "Whoops!!!! This doesn't feel right. There might be an issue. Please contact the administrator.",
@@ -102,7 +102,7 @@ const AddRemainderTypeForm = ({
   return (
     <section className="bg-white min-h-screen py-8">
       <HeadingAndButton
-        title="Add Remainder Details"
+        title="Add Reminder Details"
         buttonText="Go Back"
         buttonIcon={IoChevronBackCircleOutline}
         onButtonClick={() => setCurrentPage(!currentPage)}
@@ -112,20 +112,20 @@ const AddRemainderTypeForm = ({
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1">
             <Input
-              defaultName="remainder_type_name"
+              defaultName="reminder_type_name"
               register={register}
-              name="Remainder Name"
+              name="Reminder Name"
               required={true}
               pattern={null}
               errors={errors}
-              placeholder="Enter Remainder name"
+              placeholder="Enter Reminder name"
               setError={setError}
               clearError={clearErrors}
               autoComplete="off"
               type="text"
               classes={`px-3 py-2 text-sm w-full`}
               onChangeInput={null}
-              defaultValue={defaultValues.remainder_type_name}
+              defaultValue={defaultValues.reminder_type_name}
               setValue={setValue}
             />
           </div>
@@ -167,4 +167,4 @@ const AddRemainderTypeForm = ({
   );
 };
 
-export default AddRemainderTypeForm;
+export default AddReminderTypeForm;

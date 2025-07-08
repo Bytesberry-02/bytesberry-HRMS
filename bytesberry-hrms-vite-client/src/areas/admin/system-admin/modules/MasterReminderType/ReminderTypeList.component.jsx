@@ -7,54 +7,54 @@ import { BsTrash3 } from "react-icons/bs";
 import { MdAdd } from "react-icons/md";
 
 import axios from "../../../../../api/axios";
-import { MASTER_REMAINDER_TYPE_CONFIG_URL } from "../../../../../api/api_routing_urls";
+import { MASTER_REMINDER_TYPE_CONFIG_URL } from "../../../../../api/api_routing_urls";
 
 import HeadingAndButton from "../../../../../reusable-components/HeadingAndButton";
 import DeleteModal from "../../../../../reusable-components/modals/DeleteModal";
 
 import showToast from "../../../../../utilities/notification/NotificationModal";
 
-const RemainderTypeList = ({
+const ReminderTypeList = ({
   setCurrentPage,
   currentPage,
-  getRemainderTypeList,
-  remaindertypeList,
-  setEditRemainderTypeDetails,
+  getReminderTypeList,
+  remindertypeList,
+  setEditReminderTypeDetails,
 }) => {
   const [showDelete, setShowDelete] = useState(false);
-  const [remaindertypeDeleteId, setRemainderTypeDeleteId] = useState(null);
+  const [remindertypeDeleteId, setReminderTypeDeleteId] = useState(null);
 
   // Handle Edit
-  const onClickEdit = (remaindertypeObj) => {
-    setEditRemainderTypeDetails(remaindertypeObj);
+  const onClickEdit = (remindertypeObj) => {
+    setEditReminderTypeDetails(remindertypeObj);
     setCurrentPage(!currentPage);
   };
 
   // Handle Delete
   const onClickDelete = async () => {
     try {
-        if (remaindertypeDeleteId) {
-            //console.log("Deleting ID:", remaindertypeDeleteId); // Debugging Log
+        if (remindertypeDeleteId) {
+            //console.log("Deleting ID:", remindertypeDeleteId); // Debugging Log
             
-            const response = await axios.post(`${MASTER_REMAINDER_TYPE_CONFIG_URL}/delete`, {
-                remainder_type_id: remaindertypeDeleteId
+            const response = await axios.post(`${MASTER_REMINDER_TYPE_CONFIG_URL}/delete`, {
+                reminder_type_id: remindertypeDeleteId
             });
 
            // console.log("API Response:", response); // Debugging Log
             setShowDelete(false);
 
             if (response.status === 200) {
-                showToast("Remainder Type deleted successfully.", "success");
-                getRemainderTypeList(); // Refresh list after deletion
+                showToast("Reminder Type deleted successfully.", "success");
+                getReminderTypeList(); // Refresh list after deletion
             } else {
-                showToast("Failed to delete Remainder Type.", "error");
+                showToast("Failed to delete Reminder Type.", "error");
             }
         }
     } catch (error) {
         console.error("Delete Error:", error);
-        showToast("Error deleting Remainder Type. Try again.", "error");
+        showToast("Error deleting Reminder Type. Try again.", "error");
     } finally {
-        setEditRemainderTypeDetails(null);
+        setEditReminderTypeDetails(null);
     }
 };
 
@@ -62,12 +62,12 @@ const RemainderTypeList = ({
     <section className="py-8 bg-white min-h-screen">
       <div>
         <HeadingAndButton
-          title="Remainder Type Master Configuration"
-          buttonText="Add Remainder Type Details"
+          title="Reminder Type Master Configuration"
+          buttonText="Add Reminder Type Details"
           buttonIcon={MdAdd}
           onButtonClick={() => {
             setCurrentPage(!currentPage);
-            setEditRemainderTypeDetails({});
+            setEditReminderTypeDetails({});
           }}
         />
 
@@ -76,16 +76,16 @@ const RemainderTypeList = ({
             <thead>
               <tr className="border-b">
                 <th className="pl-4 py-2 w-[10%] text-start">Sl. No.</th>
-                <th className="w-[80%] text-start">Remainder Type Name</th>
+                <th className="w-[80%] text-start">Reminder Type Name</th>
                 <th className="w-[10%]">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {remaindertypeList?.length > 0 ? (
-                remaindertypeList.map((mapObj, index) => (
+              {remindertypeList?.length > 0 ? (
+                remindertypeList.map((mapObj, index) => (
                   <tr key={index} className={index % 2 === 0 ? "bg-slate-50" : "bg-slate-100"}>
                     <td className="pl-4 py-4">{index + 1}</td>
-                    <td>{mapObj?.remainder_type_name}</td>
+                    <td>{mapObj?.reminder_type_name}</td>
                     <td className="flex gap-x-4 items-center justify-center py-4">
                       <FiEdit2
                         color="green"
@@ -97,7 +97,7 @@ const RemainderTypeList = ({
                         color="red"
                         size={16}
                         onClick={() => {
-                          setRemainderTypeDeleteId(mapObj?.remainder_type_id || null);
+                          setReminderTypeDeleteId(mapObj?.reminder_type_id || null);
                           setShowDelete(true);
                         }}
                         className="cursor-pointer"
@@ -128,4 +128,4 @@ const RemainderTypeList = ({
   );
 };
 
-export default RemainderTypeList;
+export default ReminderTypeList;
