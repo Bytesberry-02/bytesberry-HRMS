@@ -60,15 +60,15 @@ export default function SystemAdminSidebar({
                 </li>
 
                 <li className="pt-2">
-                  <Link to="/system-admin/master-config-Remainder-Type" className="pt-2">
+                  <Link to="/system-admin/master-config-reminder-type" className="pt-2">
                     <span
                       className={`shrink-0 ${
-                        pathname.includes("/system-admin/master-config-Remainder-Type")
+                        pathname.includes("/system-admin/master-config-reminder-type")
                           ? "text-slate-700 font-semibold"
                           : "text-slate-500 font-normal"
                       } font-medium`}
                     >
-                      Remainder Type
+                      Reminder Type
                     </span>
                   </Link>
                 </li>
@@ -80,15 +80,15 @@ export default function SystemAdminSidebar({
             <div className="flex items-center gap-x-2 mb-4">
               <FaUsers size={20} />
               <div className="text-lg cursor-pointer">
-                <Link to="#" className="py-1">
+                <Link to="/system-admin/client-reminder-config" className="py-1">
                   <p
                     className={`shrink-0 ${
-                      pathname.includes("#")
+                      pathname.includes("/system-admin/client-reminder-config")
                         ? "text-slate-700 font-semibold"
                         : "text-slate-700 font-normal"
                     }`}
                   >
-                    Remainder Details Management
+                    Reminder Details Management
                   </p>
                 </Link>
               </div>
